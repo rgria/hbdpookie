@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>25 ANYTIME REDEEMABLE COUPONS • Happy mid 50's Birthday</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#ff7fb3; --blush:#ffc7dc; --white:#ffffff; --soft:#fff0f6; --deep:#ff5f9e;
+      --lav:#e9d7ff; --bg:#ffe9f1; --text:#59253a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background: radial-gradient(circle at 20% 20%, var(--bg), var(--white) 60%), linear-gradient(180deg, #ffe3ef 0%, #fff 100%);
+      min-height:100vh;
+    }
+    .hearts{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .heart{position:absolute; color:#ff8fbf; opacity:.15; font-size:28px; animation:floatUp 8s linear infinite}
+    @keyframes floatUp{
+      0%{transform:translateY(0) translateX(0) scale(1); opacity:.15}
+      50%{opacity:.25}
+      100%{transform:translateY(-120vh) translateX(20px) scale(1.3); opacity:0}
+    }
+    header{
+      position:sticky; top:0; z-index:5;
+      background:rgba(255,255,255,.85); backdrop-filter:saturate(1.2) blur(8px); border-bottom:1px solid #ffd6e7;
+    }
+    .wrap{max-width:1000px; margin:0 auto; padding:14px 18px; display:flex; align-items:center; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:40px; height:40px; border-radius:50%; background:var(--soft); display:grid; place-items:center; border:2px solid var(--blush); color:var(--deep)}
+    .title{font-weight:700; font-size:18px}
+    nav{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    .tab{border:none; background:var(--soft); color:var(--text); padding:8px 12px; border-radius:999px; cursor:pointer; border:1px solid #ffd6e7; transition:.2s}
+    .tab.active{background:var(--pink); color:white; border-color:var(--deep)}
+    main{position:relative; z-index:1}
+    section{max-width:1000px; margin:24px auto; padding:20px; background:#fff; border:1px solid #ffd6e7; border-radius:16px; box-shadow:0 10px 24px rgba(255,127,179,.08)}
+    h1,h2,h3{margin:0 0 10px}
+    h1{font-size:28px}
+    .sub{color:#8a4a63}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{border:none; background:var(--pink); color:#fff; padding:10px 14px; border-radius:10px; cursor:pointer; transition:.2s}
+    .btn.secondary{background:var(--lav); color:#522b5b}
+    .btn.ghost{background:transparent; color:var(--deep); border:1px solid var(--deep)}
+    .btn:hover{filter:brightness(1.05) saturate(1.05)}
+    .card{background:var(--soft); border:1px solid #ffd6e7; border-radius:14px; padding:16px}
+    .grid{display:grid; gap:14px}
+    .grid.coupons{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+    .coupon-title{font-weight:700}
+    .coupon-note{font-size:13px; color:#7a4c63}
+    .coupon-actions{display:flex; gap:8px; align-items:center; margin-top:10px}
+    .redeem{background:var(--pink); color:white; border:none; padding:8px 12px; border-radius:10px; cursor:pointer}
+    .redeem:hover{background:var(--deep)}
+    .keep{background:transparent; color:var(--deep); border:1px solid var(--deep); padding:8px 12px; border-radius:10px; cursor:pointer}
+    .used{opacity:.55; filter:grayscale(.2)}
+    .progress{display:flex; align-items:center; gap:8px; margin:8px 0 16px}
+    .pill{background:var(--soft); border:1px solid #ffd6e7; border-radius:999px; padding:6px 10px; font-weight:600}
+    .bar{height:10px; background:#ffe3ef; border-radius:999px; overflow:hidden; flex:1}
+    .bar > span{display:block; height:100%; background:linear-gradient(90deg, var(--pink), var(--deep)); width:0%; transition:width .4s ease}
+    .quote{font-size:16px; color:#6a2d49; border-left:4px solid var(--pink); padding-left:12px; margin:10px 0}
+    .modal-backdrop{position:fixed; inset:0; background:rgba(77,14,39,.35); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; z-index:20}
+    .modal{width:min(520px, 92vw); background:#fff; border-radius:16px; border:1px solid #ffd6e7; padding:16px; box-shadow:0 14px 36px rgba(77,14,39,.25)}
+    .modal h3{margin-bottom:6px}
+    .modal p{color:#6b3150}
+    .modal-actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    .confetti{position:fixed; inset:0; pointer-events:none; z-index:30}
+    .confetti i{position:absolute; color:#ff8fbf; font-size:22px; animation:pop 1200ms ease-out forwards}
+    @keyframes pop{
+      0%{transform:translate(var(--x), var(--y)) scale(.6); opacity:0}
+      20%{opacity:1}
+      100%{transform:translate(calc(var(--x) + var(--dx)), calc(var(--y) + var(--dy))) scale(1.6); opacity:0}
+    }
+    .gallery-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px}
+    .photo{position:relative; overflow:hidden; border-radius:14px; border:1px solid #ffd6e7; background:#fff; aspect-ratio:1/1; display:grid; place-items:center}
+    .photo img{width:100%; height:100%; object-fit:cover}
+    .photo .caption{position:absolute; left:0; right:0; bottom:0; background:linear-gradient(0deg, rgba(255,127,179,.75), rgba(255,127,179,0)); color:white; padding:8px 10px; font-size:13px}
+    .tip{font-size:13px; color:#7a4c63}
+    footer{text-align:center; color:#8a4a63; padding:40px 12px 60px}
+    .small{font-size:12px}
+    @media (max-width:740px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">💖</div>
+        <div class="title">Pookie’s Coupons</div>
+      </div>
+      <nav>
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="coupons">Coupons</button>
+        <button class="tab" data-tab="photos">Photos</button>
+        <button class="tab" data-tab="about"> About</button>
+      </nav>
+    </div>
+  </header>
+  <meta charset="UTF-8">
+  <title>Pookie’s Birthday Site</title>
+  <link rel="stylesheet" href="photos.css">
+
+  <style>
+
+  /* Magical password box */
+    .password-box {
+      position: relative;
+      text-align: center;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+      margin: 30px auto;
+      max-width: 400px;
+    }
+
+    .password-box input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    .password-box button {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .password-box button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Sparkles */
+    .password-box::before,
+    .password-box::after {
+      content: "✨";
+      position: absolute;
+      font-size: 24px;
+      animation: sparkle 2s infinite;
+      opacity: 0.8;
+    }
+    .password-box::before {
+      top: 10px;
+      left: 20px;
+      animation-delay: 0s;
+    }
+    .password-box::after {
+      bottom: 10px;
+      right: 20px;
+      animation-delay: 1s;
+    }
+    @keyframes sparkle {
+      0%   { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+      50%  { transform: scale(1.2) rotate(20deg); opacity: 1; }
+      100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+    }
+    </style>
+</head>
+<body>
+
+
+  <main>
+    <section id="home">
+      <div class="hero">
+        <div>
+          <h1>Happy halfway to 50th Birthday, Pookie! 💌</h1>
+          <p class="sub">A year of coupons to redeem, big backness, and pookieness for life.</p>
+          <div class="quote">I love you so much</div>
+          <div class="cta">
+            <button class="btn" data-tab="coupons">View your coupons</button>
+            <button class="btn secondary" data-tab="photos">Look at us</button>
+            <button class="btn ghost" data-tab="about">Read</button>
+          </div>
+          <div class="progress">
+            <span class="pill" id="count-pill">0 of 25 redeemed</span>
+            <div class="bar"><span id="bar-fill"></span></div>
+          </div>
+          <p class="tip">Each coupon is a promise—redeem them anytime this year. It’ll ask if you’re sure, then sparkle away and save your progress here.</p>
+        </div>
+        <div class="card">
+          <h3>Today’s little love note</h3>
+          <p>Thank you for being the kindest, funniest, fart(iest) person. You make everything better. ILOVEYOUSOMCUH💗</p>
+          <p class="small">— YOURE FFF(FAT FUNNY FUN), Pookie</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="coupons" hidden>
+      <h2>Pookie’s coupons, sealed with big fart and gooey poop and a lot of love 💋</h2>
+      <p class="sub">Tap to redeem. It’ll ask if you really want to use it—once it’s used, it disappears like a wish come true.</p>
+
+      <div class="progress">
+        <span class="pill" id="count-pill-2">0 of 23 redeemed</span>
+        <div class="bar"><span id="bar-fill-2"></span></div>
+      </div>
+
+      <div class="grid coupons" id="coupon-grid"></div>
+    </section>
+
+    <section id="photos" hidden>
+      <h2>Photo corner📸</h2>
+      <p class="sub">Photos to relive the memories. Click to see them bigger.</p>
+  
+
+      <!-- Slideshow -->
+<div class="card" style="margin-bottom:16px; overflow:hidden; position:relative;">
+  <div id="slideshow" style="position:relative; height:320px; display:flex; align-items:center; justify-content:center;">
+    <!-- JS will insert slides here -->
+  </div>
+  <div style="position:absolute; right:12px; top:12px; z-index:6;">
+    <button class="btn ghost" id="pause-slide">Pause</button>
+  </div>
+</div>
+
+  <!--  Password Gate for Photos Tab -->
+</div id="password-section" class="password-box">
+    <p>🔮 Enter the secret spell to unlock moreeee:</p>
+    <input type="password" id="password-input" placeholder="Type the magic code...">
+    <button onclick="checkPassword()">✨ Unlock</button>
+  </div>
+
+  <!-- Hidden Gallery -->
+  <div id="private-gallery" style="display:none;">
+    <h2>💖 Magical Memories 💖</h2>
+    <div class="masonry">
+      <div class="photo polaroid reveal">
+        <img src="photos\IMG_5022.JPG" alt="Cute memory">
+        
+      </div>
+      <div class="photo polaroid reveal">
+        <img src="photos\IMG_0447.JPG" alt="Picnic giggles">
+       
+      </div>
+      <div class="photo polaroid reveal">
+        <img src="photos\IMG_5189.JPG" alt="Stargazing">
+        
+      </div>
+      <!-- Add more photos/videos here -->
+    </div>
+  </div>
+ <script>
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const correctPassword = "10272025"; // your chosen password
+
+      if (input === correctPassword) {
+        document.getElementById("private-gallery").style.display = "block";
+        document.getElementById("password-section").style.display = "none";
+        // Optional: smooth scroll to gallery
+        document.getElementById("private-gallery").scrollIntoView({ behavior: "smooth" });
+      } else {
+        alert("✨ Wrong incantation! Try again 🪄");
+      }
+    }
+  </script>
+</body>
+
+
+  <!-- Hidden Gallery (locked until password is correct) -->
+
+
+      <div class="gallery-grid" id="gallery">
+        <figure class="photo">
+          <img src="photos\IMG_5919.jpg" alt="Hands holding coffee" />
+          
+        </figure>
+        <figure class="photo">
+          <img src="photos\IMG_8330.JPG" alt="City lights" />
+         
+        </figure>
+        <figure class="photo">
+          <img src="photos\IMG_5897.JPG" alt="Picnic" />
+         
+        </figure>
+        <figure class="photo">
+          <img src="photos\IMG_7751.JPG" alt="Stargazing" />
+         
+        </figure>
+        <figure class="photo">
+          <img src="photos\IMG_7382.JPG" alt="Dessert" />
+          
+        </figure>
+      </div>
+
+      <template id="photo-tpl">
+  <figure class="photo polaroid">
+    <img src="" alt=""/>
+    <figcaption class="caption">Caption</figcaption>
+  </figure>
+</template>
+
+<template id="video-tpl">
+  <figure class="photo polaroid video-wrap">
+    <video playsinline muted loop controls preload="metadata"></video>
+    <figcaption class="caption">Video memory</figcaption>
+  </figure>
+</template>
+
+    </section>
+
+    <section id="about" hidden>
+      <h2>Our life 💞</h2>
+      <div class="grid">
+        <div class="card">
+          <p>Dear Pookie,</p>
+          <p>I made this coupon corner of the internet to hold little promises—of lazy Sundays, extra dessert, and all the small things that make us us(and im poor this year). These coupons are out of this world smart big brain omg who made this, but they’re real. They say: I’m here. I’m yours. I choose your laugh, your sleepy face, your “icecream/MITHAII"</p>
+          <p>Redeem them when you need comfort or celebration or pookietime or do whatever you want—</p>
+          <p>Love,<br/>Pookie</p>
+        </div>
+        <div class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>• Tap a coupon → confirm you want to use it.</li>
+            <li>• It disappears and adds a sprinkle of hearts.</li>
+            <li>• Your progress saves in this browser, so you can come back anytime.</li>
+          </ul>
+          <p class="tip">If you ever want to reset, scroll down and hit “Reset coupons.”</p>
+          <button class="btn ghost" id="reset-btn">Reset coupons</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made with love and pookieness. 💗
+    <div class="small">Pookie x Pookie  — ONE BIG FAT POOKIE</div>
+  </footer>
+
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-label="Redeem coupon?">
+    <div class="modal">
+      <h3>Use this coupon now?</h3>
+      <p>Are you sure you want to redeem this, Pookie? It’ll disappear once used—because wishes are meant to come true. 💕</p>
+      <div class="modal-actions">
+        <button class="btn" id="confirm-redeem">Yes, redeem 💖</button>
+        <button class="btn secondary" id="cancel-redeem">No, save it</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script>
+    // Floating hearts background
+    const heartsContainer = document.querySelector('.hearts');
+    const createFloatingHearts = () => {
+      const w = window.innerWidth, h = window.innerHeight;
+      heartsContainer.innerHTML = '';
+      for (let i = 0; i < 24; i++) {
+        const span = document.createElement('span');
+        span.className = 'heart';
+        span.textContent = ['💖','💗','💞','💕','💘'][Math.floor(Math.random()*5)];
+        span.style.left = Math.random()*w + 'px';
+        span.style.bottom = -Math.random()*h*0.3 + 'px';
+        span.style.animationDelay = (Math.random()*6)+'s';
+        span.style.fontSize = (24 + Math.random()*24)+'px';
+        heartsContainer.appendChild(span);
+      }
+    };
+    createFloatingHearts();
+    window.addEventListener('resize', createFloatingHearts);
+
+    // Tabs
+    const tabs = document.querySelectorAll('.tab');
+    const sections = ['home','coupons','photos','about'].map(id => document.getElementById(id));
+    const switchTab = (name) => {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      sections.forEach(sec => sec.hidden = sec.id !== name);
+    };
+    tabs.forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
+    document.querySelectorAll('.btn[data-tab]').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+    // Coupons (your list)
+    const defaultCoupons = [
+      {title:'Breakfast/Lunch/Dinner/billu in bed', note:'Anything you want.'},
+      {title:'Movie night of your choice', note:'Your pick.'},
+      {title:'Massage session', note:'30-minute session.'},
+      {title:'Date night planned by me', note:'*use when im rich again*'},
+      {title:'Pookietime Day', note:'unlimited pookietime day.'},
+      {title:'Game night', note:'LOSER COOKS.'},
+      {title:'Picnic afternoon', note:'Blanket, fruit, and cloud shapes.'},
+      {title:'Dessert of choice', note:'We eat it first. Because we can.'},
+      {title:'Do mothing', note:'Sleep-in + zero plans + Cancel existing plans and do nothing.'},
+      {title:'Big fat dinner', note:'Homemade or any restaurant you pick or takeout.'},
+      {title:'Weekend mini getaway', note:'One night, *use when im rich again*.'},
+      {title:'Bubble bath duo', note:'Bath bombs, two pookeis in the bathtub.'},
+      {title:'Favorite meal cooked', note:'Chef Pookie at your service.'},
+      {title:'Sleep-in pass', note:'No alarms.'},
+      {title:'Apron', note:'You only have one.'},
+      {title:'BLANK', note:'Put anything you want.'},
+      {title:'take me to gym*', note:'use it when i get lazy.'},
+      {title:'take me to gym**', note:'use it when i get lazy.'},
+      {title:'Mystery surprise', note:'use at your own risk'}
+    ];
+    // If you want exactly 25, add 6 more custom coupons here.
+
+    // Local storage
+    const LS_KEY = 'pookie_coupons_v1';
+    const loadState = () => {
+      try{
+        const raw = localStorage.getItem(LS_KEY);
+        if (!raw) return {used:[]};
+        const parsed = JSON.parse(raw);
+        return {used: Array.isArray(parsed.used) ? parsed.used : []};
+      }catch(e){ return {used:[]}; }
+    };
+    const saveState = (state) => localStorage.setItem(LS_KEY, JSON.stringify(state));
+    const state = loadState();
+
+    // Progress
+    const grid = document.getElementById('coupon-grid');
+    const countPill = document.getElementById('count-pill');
+    const countPill2 = document.getElementById('count-pill-2');
+    const barFill = document.getElementById('bar-fill');
+    const barFill2 = document.getElementById('bar-fill-2');
+
+    const updateProgress = () => {
+      const usedCount = state.used.length;
+      const total = defaultCoupons.length;
+      const pct = total ? Math.round((usedCount/total)*100) : 0;
+      const text = `${usedCount} of ${total} redeemed`;
+      if (countPill) countPill.textContent = text;
+      if (countPill2) countPill2.textContent = text;
+      if (barFill) barFill.style.width = pct + '%';
+      if (barFill2) barFill2.style.width = pct + '%';
+    };
+
+    const renderCoupons = () => {
+      grid.innerHTML = '';
+      defaultCoupons.forEach((c, idx) => {
+        const used = state.used.includes(idx);
+        const card = document.createElement('div');
+        card.className = 'card ' + (used ? 'used' : '');
+        card.innerHTML = `
+          <div class="coupon-title">${c.title}</div>
+          <div class="coupon-note">${c.note}</div>
+          <div class="coupon-actions">
+            ${used ? '<span class="pill">Used 💗</span>' : `<button class="redeem" data-idx="${idx}">Redeem 💕</button>`}
+            ${used ? '' : '<button class="keep">Keep for later</button>'}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      updateProgress();
+      grid.querySelectorAll('.redeem').forEach(btn=>{
+        btn.addEventListener('click', () => openConfirm(parseInt(btn.dataset.idx,10)));
+      });
+    };
+
+    // Confirm modal
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const confirmBtn = document.getElementById('confirm-redeem');
+    const cancelBtn = document.getElementById('cancel-redeem');
+    let pendingIndex = null;
+
+    const openConfirm = (index) => {
+      pendingIndex = index;
+      modalBackdrop.style.display = 'flex';
+    };
+    const closeConfirm = () => {
+      modalBackdrop.style.display = 'none';
+      pendingIndex = null;
+    };
+    cancelBtn.addEventListener('click', closeConfirm);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeConfirm(); });
+
+    confirmBtn.addEventListener('click', () => {
+      if (pendingIndex === null) return;
+      if (!state.used.includes(pendingIndex)) {
+        state.used.push(pendingIndex);
+        saveState(state);
+        renderCoupons();
+        sprinkleHearts();
+      }
+      closeConfirm();
+    });
+
+    // Confetti hearts
+    const confettiEl = document.getElementById('confetti');
+    const sprinkleHearts = () => {
+      for (let i=0;i<16;i++){
+        const piece = document.createElement('i');
+        piece.textContent = ['💖','💗','💕'][Math.floor(Math.random()*3)];
+        const x = window.innerWidth/2 + (Math.random()*120-60);
+        const y = window.innerHeight/2 + (Math.random()*60-30);
+        const dx = (Math.random()*400-200);
+        const dy = (Math.random()*300-50);
+        piece.style.setProperty('--x', x+'px');
+        piece.style.setProperty('--y', y+'px');
+        piece.style.setProperty('--dx', dx+'px');
+        piece.style.setProperty('--dy', dy+'px');
+        confettiEl.appendChild(piece);
+        setTimeout(()=>piece.remove(), 1200);
+      }
+    };
+
+    // Reset
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      if (confirm('Reset all coupons to unused?')) {
+        state.used = [];
+        saveState(state);
+        renderCoupons();
+      }
+    });
+
+    // Gallery lightbox
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.createElement('div');
+    Object.assign(lightbox.style, {
+      position:'fixed', inset:'0', background:'rgba(35,10,24,.75)',
+      display:'none', alignItems:'center', justifyContent:'center', zIndex:'40', padding:'20px'
+    });
+    const lbImg = document.createElement('img');
+    lbImg.style.maxWidth = '92vw';
+    lbImg.style.maxHeight = '88vh';
+    lbImg.style.border = '8px solid #ffd6e7';
+    lbImg.style.borderRadius = '20px';
+    lbImg.style.boxShadow = '0 20px 60px rgba(77,14,39,.55)';
+    lightbox.appendChild(lbImg);
+    document.body.appendChild(lightbox);
+    gallery.querySelectorAll('img').forEach(img=>{
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', ()=>{
+        lbImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+    lightbox.addEventListener('click', ()=> lightbox.style.display = 'none');
+
+    // Init
+    renderCoupons();
+    updateProgress();
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e)=>{
+      if (e.key.toLowerCase() === 'h') switchTab('home');
+      if (e.key.toLowerCase() === 'c') switchTab('coupons');
+      if (e.key.toLowerCase() === 'p') switchTab('photos');
+      if (e.key.toLowerCase() === 'a') switchTab('about');
+    });
+  </script>
+
+<link rel="stylesheet" href="photos.css">
+
+  <script src="photos.js">
+
+  </script>
+
+</body>
+</html>
+```
